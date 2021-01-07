@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package galerie.entity;
+import java.util.List;
 import javax.persistence.*;
 import lombok.*;
 

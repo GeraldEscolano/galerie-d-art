@@ -5,7 +5,7 @@
  */
 package galerie.entity;
 
-import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.*;
 import lombok.*;
@@ -16,24 +16,35 @@ import lombok.*;
  */
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
 @Entity // Une entité JPA
-public class Transaction {
-    
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Personne {
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Integer id;
     
     @Column(unique=true)
     @NonNull
-    private Date venduLe;
+    private String nom;
     
     @Column(unique=true)
     @NonNull
-    private float prixVente;
+     String[] adresse;
     
-    public Transaction(Integer id, Date venduLe, float prixVente) {
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "Personne")
+     List<Transaction> transactions;
+
+    public Personne(Integer id, String nom, String[] adresse, List<Transaction> transactions) {
         this.id = id;
-        this.venduLe = venduLe;
-        this.prixVente = prixVente;
+        this.nom = nom;
+        adresse = new String[]{};
+        transactions = new LinkedList<Transaction>();
     }
     
-
+    
+    
+    
+    public float budgetArt(int annee){
+    throw new UnsupportedOperationException("Pas encore implémenté");
+    }
+    
+    
 }

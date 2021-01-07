@@ -2,6 +2,7 @@ package galerie.entity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -41,7 +42,7 @@ public class Galerie {
         this.id = id;
         this.nom = nom;
         this.adresse = adresse;
-        this.expos = expos;
+        expos = new ArrayList<Exposition>();
     }
 
     

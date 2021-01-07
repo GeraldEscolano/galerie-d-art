@@ -33,6 +33,7 @@ public class Exposition {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "Exposition")
     private List<Transaction> transactions;
     
+    @NonNull
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "Exposition")
     private List<Tableau> tableaux;
 
