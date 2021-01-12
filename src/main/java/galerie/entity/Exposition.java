@@ -36,17 +36,6 @@ public class Exposition {
     @NonNull
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "Exposition")
     private List<Tableau> tableaux;
-
-    public Exposition(Integer id, Date date, String intitule, int duree, List<Transaction> transactions, List<Tableau> tableaux) {
-        this.id = id;
-        this.date = date;
-        this.intitule = intitule;
-        this.duree = duree;
-        this.transactions = transactions;
-        this.tableaux = tableaux;
-    }
-        
-    
     
     public float Ca(){
     float ca = 0;

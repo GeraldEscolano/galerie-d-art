@@ -24,7 +24,6 @@ public class Galerie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "galerie_id")
     private Integer id;
 
     @Column(unique = true)
@@ -37,22 +36,14 @@ public class Galerie {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "Galerie")
     private List<Exposition> expos;
-
-    public Galerie(Integer id, String nom, String adresse, List<Exposition> expos) {
-        this.id = id;
-        this.nom = nom;
-        this.adresse = adresse;
-        expos = new ArrayList<Exposition>();
-    }
-
     
-    public float CAannuel(int a) {
+     public float CAannuel(int a) {
         float ca_annuel = 0;
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
         Date d;
         try {
             d = formatter.parse(String.valueOf(a));
-            for (Exposition e : expos) {
+            for (Exposition e : this.expos) {
                 if (d.equals(e.getDate())) {
                     ca_annuel = e.Ca() + ca_annuel;
 
@@ -63,6 +54,4 @@ public class Galerie {
         }
        return ca_annuel;
     }
-    
-    
 }

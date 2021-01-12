@@ -5,6 +5,7 @@
  */
 package galerie.entity;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.*;
@@ -40,25 +41,15 @@ public class Personne {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "Personne")
     List<Transaction> transactions;
-
-    public Personne(Integer id, String nom, float budget, String[] adresse, List<Transaction> transactions) {
-        this.id = id;
-        this.nom = nom;
-        this.budget = budget;
-        adresse = new String[]{};
-        transactions = new LinkedList<Transaction>();
-    }
-
-    public Personne(Integer id, String nom, String[] adresse) {
-        this.id = id;
-        this.nom = nom;
-
-        adresse = new String[]{};
-
-    }
-
+    
     public float budgetArt(int annee) {
-        throw new UnsupportedOperationException("Pas encore implémenté");
+          float budget = 0f;
+        for (Transaction t : transactions){
+            Date d = t.getVenduLe();
+            if (d.after(new Date(annee, 1, 1)) && d.before(new Date(annee, 12, 31))){
+                budget =t.getPrixVente() + budget;
+            }
+        }
+        return budget;
     }
-
-}
+    }

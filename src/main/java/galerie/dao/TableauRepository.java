@@ -1,11 +1,11 @@
 package galerie.dao;
 
-import galerie.entity.Exposition;
 import org.springframework.data.jpa.repository.JpaRepository;
 import galerie.entity.Galerie;
+import galerie.entity.Tableau;
 
 // This will be AUTO IMPLEMENTED by Spring 
 
-public interface ExpositionRepository extends JpaRepository<Exposition, Integer> {
+public interface TableauRepository extends JpaRepository<Tableau, Integer> {
 
 }

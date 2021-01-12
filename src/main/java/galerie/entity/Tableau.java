@@ -34,14 +34,14 @@ public class Tableau {
     @Column(unique=true)
     @NonNull
     private int hauteur;
+    
+     @ManyToMany
+    private List<Exposition> expositions;
+    
+    @OneToOne(optional=true)
+    private Transaction transaction;
+    
+    @ManyToOne(optional=true)
+    private Artiste artiste;
 
-    public Tableau(Integer id, String titre, String support, int largeur, int hauteur) {
-        this.id = id;
-        this.titre = titre;
-        this.support = support;
-        this.largeur = largeur;
-        this.hauteur = hauteur;
-    }
-    
-    
 }

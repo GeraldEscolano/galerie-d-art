@@ -1,4 +1,4 @@
-package galerie.dao;
+package galerie.entity;
 
 import galerie.entity.Galerie;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.jdbc.Sql;
+import galerie.dao.GalerieRepository;
 import galerie.dao.GalerieRepository;
 
 @Log4j2 // Génère le 'logger' pour afficher les messages de trace

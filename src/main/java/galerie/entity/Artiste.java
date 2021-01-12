@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package galerie.entity;
-
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 import lombok.*;
@@ -19,19 +17,12 @@ import lombok.*;
 
 public class Artiste extends Personne {
     
+     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    private Integer id;
+    
     @Column(unique=true)
     private String Biographie;
     
      @OneToMany(fetch = FetchType.LAZY, mappedBy = "Artiste")
     private List<Tableau> tableau;
-
-    public Artiste(Integer id, String Biographie, List<Tableau> tableau, Integer id, String nom, String[] adresse, List<Transaction> transactions) {
-        super(id, nom, adresse, transactions);
-        this.Biographie = Biographie;
-        tableau = new ArrayList<Tableau>();
-    }
-
-    
-    
-     
 }

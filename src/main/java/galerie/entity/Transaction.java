@@ -22,18 +22,17 @@ public class Transaction {
     private Integer id;
     
     @Column(unique=true)
-    @NonNull
     private Date venduLe;
     
     @Column(unique=true)
-    @NonNull
     private float prixVente;
     
-    public Transaction(Integer id, Date venduLe, float prixVente) {
-        this.id = id;
-        this.venduLe = venduLe;
-        this.prixVente = prixVente;
-    }
+     @ManyToOne
+    private Exposition exposition;
     
-
+    @OneToOne(optional=true)
+    private Tableau tableau;
+    
+    @ManyToOne
+    private Personne personne;
 }
