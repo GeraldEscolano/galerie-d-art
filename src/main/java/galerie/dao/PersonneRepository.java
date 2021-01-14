@@ -7,5 +7,4 @@ import galerie.entity.Personne;
 // This will be AUTO IMPLEMENTED by Spring 
 
 public interface PersonneRepository extends JpaRepository<Personne, Integer> {
-public float budgetArt(int annee);
 }

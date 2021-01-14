@@ -4,9 +4,7 @@
  * and open the template in the editor.
  */
 package galerie.entity;
-
-import galerie.dao.ExpositionRepository;
-import java.util.List;
+import galerie.dao.PersonneRepository;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,14 +21,14 @@ import org.springframework.test.context.jdbc.Sql;
 public class PersonneTest {
   
     @Autowired
-    private ExpositionRepository expo;
+    private PersonneRepository perso;
     
     @Test
-    @Sql("\\galerie-d-art\\src\\test\\resources\\galerie\\dao\\test-data.sql") // On peut charger des donnnées spécifiques pour un test
+    @Sql("test-data_personne.sql")
     public void onSaitCompterLesEnregistrements() {
         log.info("On compte les enregistrements de la table 'Personne'");
         int combienDansLeJeuDeTest = 1; 
-        long nombre = expo.count();
+        long nombre = perso.count();
         assertEquals(combienDansLeJeuDeTest, nombre, "On doit trouver 1 personne" );
     }
 }

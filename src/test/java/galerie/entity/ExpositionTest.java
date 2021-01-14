@@ -6,8 +6,6 @@
 package galerie.entity;
 
 import galerie.dao.ExpositionRepository;
-import java.util.Date;
-import java.util.List;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,16 +20,16 @@ import org.springframework.test.context.jdbc.Sql;
 @Log4j2 // Génère le 'logger' pour afficher les messages de trace
 @DataJpaTest
 public class ExpositionTest {
-  
+
     @Autowired
     private ExpositionRepository expo;
-    
+
     @Test
-    @Sql("test-data.sql") // On peut charger des donnnées spécifiques pour un test
+    @Sql("test-data_expo.sql")
     public void onSaitCompterLesEnregistrements() {
         log.info("On compte les enregistrements de la table 'Exposition'");
-        int combienDansLeJeuDeTest = 1; 
+        int combienDansLeJeuDeTest = 1;
         long nombre = expo.count();
-        assertEquals(combienDansLeJeuDeTest, nombre, "On doit trouver 1 exposition" );
+        assertEquals(combienDansLeJeuDeTest, nombre, "On doit trouver 1 exposition");
     }
 }
