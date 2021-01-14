@@ -34,24 +34,17 @@ public class Galerie {
     @NonNull
     private String adresse;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "Galerie")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "organisateur")
     private List<Exposition> expos;
-    
-     public float CAannuel(int a) {
-        float ca_annuel = 0;
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
-        Date d;
-        try {
-            d = formatter.parse(String.valueOf(a));
-            for (Exposition e : this.expos) {
-                if (d.equals(e.getDate())) {
-                    ca_annuel = e.Ca() + ca_annuel;
 
-                }
+    public float CAannuel(int a) {
+        float ca = 0;
+        for (Exposition e : expos) {
+            Date d = new Date(a, 5, 5);
+            if (d.after(new Date(a, 1, 1)) && d.before(new Date(a, 12, 31))) {
+                ca = e.Ca() + ca;
             }
-        } catch (ParseException ex) {
-            Logger.getLogger(Galerie.class.getName()).log(Level.SEVERE, null, ex);
         }
-       return ca_annuel;
+        return ca;
     }
 }

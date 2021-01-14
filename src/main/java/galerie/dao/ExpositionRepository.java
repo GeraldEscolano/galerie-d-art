@@ -7,5 +7,5 @@ import galerie.entity.Galerie;
 // This will be AUTO IMPLEMENTED by Spring 
 
 public interface ExpositionRepository extends JpaRepository<Exposition, Integer> {
-
+ public float Ca();
 }

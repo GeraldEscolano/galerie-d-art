@@ -26,7 +26,7 @@ public class PersonneTest {
     private ExpositionRepository expo;
     
     @Test
-    @Sql("test-data.sql") // On peut charger des donnnées spécifiques pour un test
+    @Sql("\\galerie-d-art\\src\\test\\resources\\galerie\\dao\\test-data.sql") // On peut charger des donnnées spécifiques pour un test
     public void onSaitCompterLesEnregistrements() {
         log.info("On compte les enregistrements de la table 'Personne'");
         int combienDansLeJeuDeTest = 1; 

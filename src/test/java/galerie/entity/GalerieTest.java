@@ -15,13 +15,13 @@ import galerie.dao.GalerieRepository;
 
 @Log4j2 // Génère le 'logger' pour afficher les messages de trace
 @DataJpaTest
-public class GalerieRepositoryTest {
+public class GalerieTest {
 
     @Autowired
     private GalerieRepository galerieDAO;
 
     @Test
-    @Sql("test-data.sql") // On peut charger des donnnées spécifiques pour un test
+    @Sql("C:\\Users\\escol\\Documents\\NetBeansProjects\\galerie-d-art\\src\\test\\resources\\galerie\\dao\\test-data.sql") // On peut charger des donnnées spécifiques pour un test
     public void onSaitCompterLesEnregistrements() {
         log.info("On compte les enregistrements de la table 'Galerie'");
         int combienDansLeJeuDeTest = 1; 

@@ -34,22 +34,22 @@ public class Personne {
 
     @Column(unique = true)
     @NonNull
-    String[] adresse;
+    String adresse;
 
     @Column(unique = true)
     float budget;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "Personne")
-    List<Transaction> transactions;
-    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "clients")
+    List<Transaction> achats;
+
     public float budgetArt(int annee) {
-          float budget = 0f;
-        for (Transaction t : transactions){
+        float budget = 0f;
+        for (Transaction t : this.achats) {
             Date d = t.getVenduLe();
-            if (d.after(new Date(annee, 1, 1)) && d.before(new Date(annee, 12, 31))){
-                budget =t.getPrixVente() + budget;
+            if (d.after(new Date(annee, 1, 1)) && d.before(new Date(annee, 12, 31))) {
+                budget = t.getPrixVente() + budget;
             }
         }
         return budget;
     }
-    }
+}

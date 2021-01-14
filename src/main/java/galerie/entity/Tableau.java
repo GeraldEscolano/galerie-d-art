@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package galerie.entity;
+
 import java.util.List;
 import javax.persistence.*;
 import lombok.*;
@@ -12,36 +13,41 @@ import lombok.*;
  *
  * @author escol
  */
-@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
+@Getter
+@Setter
+@NoArgsConstructor
+@RequiredArgsConstructor
+@ToString
 @Entity // Une entité JPA
 public class Tableau {
-    
-    @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
-    @Column(unique=true)
+
+    @Column(unique = true)
     @NonNull
     private String titre;
-    
-    @Column(unique=true)
+
+    @Column(unique = true)
     @NonNull
     private String support;
-    
-     @Column(unique=true)
+
+    @Column(unique = true)
     @NonNull
     private int largeur;
-     
-    @Column(unique=true)
+
+    @Column(unique = true)
     @NonNull
     private int hauteur;
-    
-     @ManyToMany
-    private List<Exposition> expositions;
-    
-    @OneToOne(optional=true)
-    private Transaction transaction;
-    
-    @ManyToOne(optional=true)
-    private Artiste artiste;
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "oeuvres")
+    private List<Exposition> accrochages;
+
+    @OneToOne(optional = true, mappedBy = "oeuvre")
+    private Transaction vendu;
+
+    @ManyToOne(optional = true)
+    private Artiste auteur;
 
 }

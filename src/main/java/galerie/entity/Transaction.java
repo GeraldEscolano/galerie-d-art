@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,25 +15,29 @@ import lombok.*;
  *
  * @author escol
  */
-@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 @Entity // Une entité JPA
 public class Transaction {
-    
-    @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
-    @Column(unique=true)
+
+    @Column(unique = true)
     private Date venduLe;
-    
-    @Column(unique=true)
+
+    @Column(unique = true)
     private float prixVente;
-    
-     @ManyToOne
-    private Exposition exposition;
-    
-    @OneToOne(optional=true)
-    private Tableau tableau;
-    
+
     @ManyToOne
-    private Personne personne;
+    private Exposition lieuDeVente;
+
+    @OneToOne(optional = true)
+    private Tableau oeuvre;
+
+    @ManyToOne
+    private Personne clients;
 }
