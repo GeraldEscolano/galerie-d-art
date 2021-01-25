@@ -33,9 +33,13 @@
                     <td><em th:text="${t.titre}">Le titre du tableau</em></td>
                     <td><em th:text="${t.support}">Le support du tableau</em></td>
                     <td><em th:text="${t.dimension}"> Les dimensions du tableau</em></td>
-                    <td><em th:text="${t.auteur}"> L'auteur du tableau</em></td>
+                    <td><em th:if="${t.auteur}" th:text="${t.auteur.getNom()}" >L'auteur du tableau</em></td>
+
                 </tr>
             </tbody>
         </table>
+        <hr/>
+        <a th:href="@{/}" href="../static/index.html">Retour au menu</a>
+        <hr/>
     </body>
 </html>
